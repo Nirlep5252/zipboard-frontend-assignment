@@ -27,13 +27,15 @@ const AccordionItem: React.FC<AccordionItemProps> = ({
         <h3 className="max-w-[300px] pr-4 text-left font-bold font-dm-sans text-[24px] text-black leading-[1.208] tracking-[-2%] md:max-w-[992px] md:text-[30px] md:leading-[1.302] dark:text-white">
           {question}
         </h3>
-        <div className="h-[24.56px] w-[26.44px] flex-shrink-0 text-black transition-transform duration-300 ease-in-out dark:text-white">
+        <div className="h-[24.56px] w-[26.44px] flex-shrink-0 text-black transition-transform duration-500 ease-in-out dark:text-white">
           {isOpen ? <MinusIcon /> : <PlusIcon />}
         </div>
       </button>
       <div
-        className={`transition-all duration-300 ease-in-out ${
-          isOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'
+        className={`transition-all ${
+          isOpen
+            ? 'max-h-[500px] opacity-100 duration-500 ease-in'
+            : 'max-h-0 opacity-0 duration-500 ease-out'
         }`}
       >
         <div className="pb-[34px]">
