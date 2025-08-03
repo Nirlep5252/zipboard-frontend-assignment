@@ -1,22 +1,27 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "../index.css";
-import Providers from "@/components/providers";
-import Header from "@/components/header";
+import type { Metadata } from 'next';
+import { DM_Sans, Geist, Geist_Mono } from 'next/font/google';
+import '../index.css';
+import Providers from '@/components/providers';
+import { ThemeToggle } from '@/components/theme/theme-toggle';
 
 const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+  variable: '--font-geist-sans',
+  subsets: ['latin'],
 });
 
 const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  variable: '--font-geist-mono',
+  subsets: ['latin'],
+});
+
+const dmSans = DM_Sans({
+  variable: '--font-dm-sans',
+  subsets: ['latin'],
 });
 
 export const metadata: Metadata = {
-  title: "zipboard-assignment",
-  description: "zipboard-assignment",
+  title: 'zipboard-assignment',
+  description: 'zipboard-assignment',
 };
 
 export default function RootLayout({
@@ -27,13 +32,11 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${dmSans.variable} antialiased`}
       >
         <Providers>
-          <div className="grid grid-rows-[auto_1fr] h-svh">
-            <Header />
-            {children}
-          </div>
+          {children}
+          <ThemeToggle />
         </Providers>
       </body>
     </html>
